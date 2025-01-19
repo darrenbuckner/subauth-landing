@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubAuth</title>
+    <meta name="description" content="SubAuth is a drop-in authentication service that turns your Stripe subscriptions into instant access control. It provides enterprise-grade security without managing passwords, user databases, or complex auth flows.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js" defer></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <div x-data="{ showSuccess: false }" class="min-h-screen">
+        <!-- Hero Section -->
+        <header class="bg-white shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+                <h1 class="text-3xl font-bold text-gray-900">SubAuth</h1>
+            </div>
+        </header>
+
+        <main>
+            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                <!-- Vision Section -->
+                <div class="text-center mb-16">
+                    <p class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                        SubAuth is a drop-in authentication service that turns your Stripe subscriptions into instant access control. It provides enterprise-grade security without managing passwords, user databases, or complex auth flows.
+                    </p>
+                </div>
+
+                <!-- Problem & Solution Grid -->
+                <div class="mt-12 grid gap-8 lg:grid-cols-2">
+                    <!-- Problem Section -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <h2 class="text-lg font-medium text-gray-900 mb-4">The Problem</h2>
+                            <p class="text-gray-600">Managing subscriber access control and authentication is complex, time-consuming, and often requires maintaining a user database and handling password resets.</p>
+                        </div>
+                    </div>
+
+                    <!-- Solution Section -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <h2 class="text-lg font-medium text-gray-900 mb-4">Our Solution</h2>
+                            <p class="text-gray-600">SubAuth drastically simplifies this process by providing a drop-in authentication service integrated with Stripe that utilizes SMS verification for user authentication and controls access based on active subscriptions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Waitlist Form -->
+                <div class="mt-16 bg-white overflow-hidden shadow rounded-lg max-w-2xl mx-auto">
+                    <div class="px-4 py-5 sm:p-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Join the Waitlist</h2>
+                        <form 
+                            x-on:submit.prevent="
+                                fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+                                    method: 'POST',
+                                    body: new FormData($event.target)
+                                })
+                                .then(() => {
+                                    showSuccess = true;
+                                    $event.target.reset();
+                                })
+                            "
+                            class="space-y-6"
+                        >
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">
+                                    Email address
+                                </label>
+                                <div class="mt-1">
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        id="email"
+                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                        placeholder="you@example.com"
+                                        required
+                                    >
+                                </div>
+                            </div>
+
+                            <div>
+                                <button
+                                    type="submit"
+                                    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                >
+                                    Join Waitlist
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Success Message -->
+                        <div
+                            x-show="showSuccess"
+                            x-transition
+                            class="mt-4 p-4 bg-green-50 rounded-md"
+                        >
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-green-800">
+                                        Thanks for joining! We'll keep you updated.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white mt-12">
+            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-gray-500 text-sm">
+                    © 2024 SubAuth. All rights reserved.
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html> 
